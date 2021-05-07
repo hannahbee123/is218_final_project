@@ -11,13 +11,13 @@
     </tr>
     </thead>
     <tbody>
-    {% for biostat in biostats %}
+    {% for data in biostats %}
     <tr>
-        <td>{{ biostat.biostats_1 }}</td>
-        <td>{{ biostat.Column_2 }}</td>
-        <td>{{ biostat.Column_3 }}</td>
-        <td>{{ biostat.Column_4 }}</td>
-        <td>{{ biostat.Column_5 }}</td>
+        <td><a href="view/{{data.id}}">{{ data.biostats_1 }}</a></td>
+        <td>{{ data.Column_2 }}</td>
+        <td>{{ data.Column_3 }}</td>
+        <td>{{ data.Column_4 }}</td>
+        <td>{{ data.Column_5 }}</td>
     </tr>
     {% endfor %}
     </tbody>
