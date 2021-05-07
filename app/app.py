@@ -78,7 +78,7 @@ def form_delete_post(data_id):
     return redirect("/", code=302)
 
 
-@app.route('/api/v1/biostats', methods=['GET'])
+@app.route('/api/v1/biostats/', methods=['GET'])
 def api_browse() -> str:
     cursor = mysql.get_db().cursor()
     cursor.execute('SELECT * FROM biostats')
@@ -100,18 +100,39 @@ def api_retrieve(data_id) -> str:
 
 @app.route('/api/v1/biostats/', methods=['POST'])
 def api_add() -> str:
+
+    content = request.json
+
+    cursor = mysql.get_db().cursor()
+    inputData = (content['biostats_1'], content['Column_2'], content['Column_3'],
+                 content['Column_4'], request.form.get('Column_5'))
+    sql_insert_query = """INSERT INTO biostats (biostats_1,Column_2,Column_3,Column_4,Column_5) VALUES (%s, %s,%s, %s,%s) """
+    cursor.execute(sql_insert_query, inputData)
+    mysql.get_db().commit()
     resp = Response(status=201, mimetype='application/json')
     return resp
 
 
 @app.route('/api/v1/biostats/<int:data_id>', methods=['PUT'])
 def api_edit(data_id) -> str:
+    cursor = mysql.get_db().cursor()
+    content = request.json
+    inputData = (content['biostats_1'], content['Column_2'], content['Column_3'],
+                 content['Column_4'], content['Column_5'], data_id)
+    sql_update_query = """UPDATE biostats t SET t.biostats_1 = %s, t.Column_2 = %s, t.Column_3 = %s, t.Column_4 = 
+        %s, t.Column_5 = %s WHERE t.id = %s """
+    cursor.execute(sql_update_query, inputData)
+    mysql.get_db().commit()
     resp = Response(status=201, mimetype='application/json')
     return resp
 
 
-@app.route('/api/biostats/<int:biostat_id>', methods=['DELETE'])
+@app.route('/api/v1/biostats/<int:data_id>', methods=['DELETE'])
 def api_delete(data_id) -> str:
+    cursor = mysql.get_db().cursor()
+    sql_delete_query = """DELETE FROM biostats WHERE id = %s """
+    cursor.execute(sql_delete_query, data_id)
+    mysql.get_db().commit()
     resp = Response(status=210, mimetype='application/json')
     return resp
 
