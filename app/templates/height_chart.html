@@ -1,12 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<head>
-    <title>Biostats Height Chart</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
-</head>
-
-<body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
 <canvas id="chart" width="400" height="400"></canvas>
 <script>
     const xlabels = [];
@@ -48,8 +43,6 @@
         });
 
     }
-
 </script>
-</body>
 
 {% endblock %}
