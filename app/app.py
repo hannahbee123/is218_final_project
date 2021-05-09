@@ -137,5 +137,10 @@ def api_delete(data_id) -> str:
     return resp
 
 
+@app.route('/height_chart', methods=['GET'])
+def display_height_chart():
+    return render_template('height_chart.html', title='Biostat Height Chart')
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
