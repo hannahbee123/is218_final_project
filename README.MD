@@ -5,8 +5,8 @@
     * Orville Dillon
     
 2. FEATURES ADDED:
-    * OAuth Feature - Orville Dillon
-    * Google Calendar - Hannah Benjamin
+    * OAuth - Orville Dillon
+    * Chart.js - Hannah Benjamin
     
 # DOCKER INSTRUCTIONS
 
@@ -25,3 +25,6 @@
 5. Edit remote interpreter settings:
 ![docker interpreter](screenshots/docker_interpreter.png)
    
+# CHART.JS BIOSTATS HEIGHT CHART
+   ![height chart link](screenshots/height_chart_1.png)
+   ![height chart link](screenshots/height_chart_2.png)
